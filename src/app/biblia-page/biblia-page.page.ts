@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-biblia-page',
@@ -18,17 +18,17 @@ export class BibliaPagePage implements OnInit {
   showVerses: boolean = false; // Controla a exibição dos versículos
 
   constructor(
-    private router: ActivatedRoute,
-  ) {}
+    private router: Router, // Para navegação
+    private activatedRoute: ActivatedRoute // Para obter parâmetros da rota
+  ) { }
 
- async ngOnInit() {
-  const id = this.router.snapshot.paramMap.get('id');
-  if (id !== null) {
-    this.detailId = +id;
-  }
+  async ngOnInit() {
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    if (id === null) {
+      this.router.navigate(['/home-page']);
+    }
 
-
-  const response = await fetch('https://www.abibliadigital.com.br/api/books');
+    const response = await fetch('https://www.abibliadigital.com.br/api/books');
     if (response.ok) {
       this.dataBoocks = await response.json();
       this.showBooks = true;  // Mostra a lista de livros
@@ -79,6 +79,10 @@ export class BibliaPagePage implements OnInit {
       console.error('Erro de conexão:', error);
     }
   }
+  closeAll() {
+    this.router.navigate(['/home-page']);
+  }
+
 }
 
 
