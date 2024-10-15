@@ -1,0 +1,62 @@
+ion-content {
+  --background: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+ion-item {
+  --padding-start: 18px;
+  --background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+
+ion-textarea {
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+  height: 300px;  /* Ajuste a altura do textarea conforme necessário */
+}
+
+ion-toolbar {
+  --background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  height: 45px;
+}
+
+ion-title {
+  color: rgb(0, 0, 0);
+  text-align: center;
+  font-size: 1.8rem;
+  margin-top: -12px;
+}
+
+ion-button {
+  margin-top: -12px;
+  --background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+p{
+  margin-left: 20px;
+}
+.boton{
+  --background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border: 2px;
+  --border-color: rgb(0, 255, 4);
+  font-size: 1.1rem;
+}
+.divider{
+  border: none;           /* Remove a borda padrão */
+  height: 2px;            /* Altura da linha */
+  background-color: rgb(0, 255, 4);;  /* Cor da linha */
+  margin: 0;
+}

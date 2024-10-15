@@ -1,10 +1,9 @@
-<ion-header>
+<ion-header >
   <ion-toolbar>
-    <ion-title>biblia-page</ion-title>
-    <ion-button (click)="closeAll()" >
-      <ion-icon name="close-circle-outline"></ion-icon>
-    </ion-button>
-
+    <ion-title slot="start">A Palavra</ion-title>
+      <ion-button slot="end" (click)="closeAll()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -27,7 +26,7 @@
   </div>
 
   <!-- Exibição dos versículos -->
-  <div *ngIf="showVerses">
+  <div class="read" *ngIf="showVerses">
     <ion-list>
       <ion-item *ngFor="let verse of chapterData.verses">
         {{ verse.number }} - {{ verse.text }}

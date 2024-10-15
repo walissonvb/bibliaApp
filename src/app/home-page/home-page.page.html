@@ -5,15 +5,14 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <img alt="hand of cristh" src="https://www.shutterstock.com/image-vector/biblical-vector-illustration-jesus-hand-260nw-2292077801.jpg" />
-    <ion-card-header>
-      <ion-card-title>Meditação Diaria</ion-card-title>
-      <ion-card-subtitle>joao 3:16</ion-card-subtitle>
+  <ion-card *ngFor=" let dados of card">
+    <img alt="hand of christ" [src]="dados.img" />    <ion-card-header>
+      <ion-card-title>{{dados.title}}</ion-card-title>
+      <ion-card-subtitle>{{dados.author}}</ion-card-subtitle>
     </ion-card-header>
 
     <ion-card-content>
-      Here's a small text description for the card content. Nothing more, nothing less.
+      {{dados.text}}
     </ion-card-content>
     <ion-button (click)="goToDetalMeditacao(20)" >Leia mais</ion-button>
 
@@ -60,7 +59,7 @@
 
 <div class="carrossel">
 <ion-item-sliding>
-  <ion-card class="card">
+  <ion-card class="card" (click)="cardOne()">
     <img alt="hand of cristh" src="https://www.shutterstock.com/image-vector/biblical-vector-illustration-jesus-hand-260nw-2292077801.jpg" />
     <ion-card-header>
       <ion-card-title>Meditação Diaria</ion-card-title>
