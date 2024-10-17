@@ -1,3 +1,11 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Certifica-se de que o conteúdo ocupa 100% da tela */
+  font-family: Arial, sans-serif;
+  --background: rgb(255, 255, 255);
+}
+
 ion-content {
   --background: rgb(255, 255, 255);
   display: flex;
@@ -69,6 +77,10 @@ ion-button {
   margin: 0;
 }
 ion-card{
+  --background: rgb(255, 255, 255);
   margin-left: 15px;
   margin-right: 15px;
+}
+ion-footer{
+  --background: rgb(255, 255, 255);
 }

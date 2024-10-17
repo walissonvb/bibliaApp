@@ -3,6 +3,8 @@ body, ion-content {
   padding: 0;
   height: 100%; /* Certifica-se de que o conteúdo ocupa 100% da tela */
   font-family: Arial, sans-serif;
+  --background: rgb(255, 255, 255);
+
 }
 ion-toolbar {
   --background: rgb(255, 255, 255);
@@ -49,6 +51,7 @@ ion-button {
   max-width: 30rem;
 }
 ion-card{
+  --background: rgb(255, 255, 255);
   margin-left: 15px;
   margin-right: 15px;
 }
