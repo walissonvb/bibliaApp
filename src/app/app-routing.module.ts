@@ -21,9 +21,14 @@ const routes: Routes = [
     loadChildren: () => import('./read-page/read-page.module').then( m => m.ReadPagePageModule)
   },
   {
+    path: 'ministerios/:id',
+    loadChildren: () => import('./ministerios-page/ministerios-page.module').then( m => m.MinisteriosPagePageModule)
+  },
+  {
     path: '**', // Curinga para rotas não reconhecidas
     redirectTo: 'home-page' // Redireciona para a página inicial
   },
+
 ];
 
 @NgModule({

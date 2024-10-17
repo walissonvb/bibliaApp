@@ -18,9 +18,10 @@ export class ReadPagePage implements OnInit {
     author: '',
     frase: '',
     userId: '',
-
+    date: new Date().toISOString()
   }
-
+  card : Meditacao [] = [];
+  currentRead: number;
   detailId: number | null = null;
   atualizar = false;
 
@@ -29,23 +30,50 @@ export class ReadPagePage implements OnInit {
     private service: ReadService,
     private router: Router, // Para navegação
     private activatedRoute: ActivatedRoute // Para obter parâmetros da rota
-  ) { }
+  ) {
+    this.currentRead = 0;
+  }
 
-  ngOnInit() {
-
+  async ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
-    if (id === null) {
+    console.log('ID da rota:', id); // Verificar o ID recuperado da rota
 
-
-      this.router.navigate(['/home-page']);
+    // Verificar se os dados possuem a propriedade 'date'
+    if (this.dados.date) {
+      this.dados.date = this.dados.date.split('T')[0];
     }
 
+    if (id === null) {
+      this.router.navigate(['/home-page']); // Se não houver 'id', redireciona para a home
+    } else {
+      if (id === '1') {
+        console.log('ID 1 detectado');
+        this.currentRead = 1; // Atualizando o valor de currentRead
+      } else if (id === '2') {
+        try {
+          // Aguardando a resposta da função readMeditRead
+          const response = await this.service.readMeditRead();
+
+          // Verificando o conteúdo retornado
+          console.log('Dados recebidos:', response);
+
+          // Atribuindo o resultado ao array 'card'
+          this.card = response;
+
+          // Atualizando o valor de currentRead
+          this.currentRead = 2;
+        } catch (error) {
+          console.error('Erro ao ler os dados:', error);
+        }
+      }
+    }
   }
-  closeAll() {
+    closeAll() {
     this.router.navigate(['/home-page']);
   }
 
   async enviando(form: NgForm) {
+    console.log(form)
     if (form.valid) {
       const cliente = form.value;
       cliente.userId = this.dados.userId;

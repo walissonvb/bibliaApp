@@ -47,12 +47,14 @@ ion-button {
 p{
   margin-left: 20px;
 }
-.boton{
+ion-button {
+
+  margin: 10px;
   --background: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
   border: 2px;
   --border-color: rgb(0, 255, 4);
-  font-size: 1.1rem;
+  max-width: 20rem;
 }
 .divider{
   border: none;           /* Remove a borda padrão */

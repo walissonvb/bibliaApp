@@ -8,20 +8,20 @@ import { ReadService, Meditacao } from '../servico/read.service';
 })
 export class HomePagePage implements OnInit {
 card : Meditacao [] = [];
-
+currentRead: number;
 
   constructor(
     private servicoRead: ReadService,
     private router: Router,
-  ) { }
+  ) {this.currentRead =  0}
 
   ngOnInit() {
 
-    const card = this.servicoRead.readMeditacao().then ((response) =>{
+    const card = this.servicoRead.readMeditRead().then ((response) =>{
       this.card = response;
+      console.log(card)
       });
 
-      console.log(card)
 
   }
   goToDetailPage(id: number) {
@@ -30,10 +30,17 @@ card : Meditacao [] = [];
 
 }
 goToDetalMeditacao(id: number){
+  this.currentRead = id;
   this.router.navigate(['./read', id]);
 
 }
 async cardOne(){
 
 }
+goToMinist(id: number){
+  console.log("router")
+  this.router.navigate(['./ministerios', id]);
+
+}
+
 }

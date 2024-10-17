@@ -1,8 +1,16 @@
-body, ion-content {
+body {
   margin: 0;
   padding: 0;
   height: 100%; /* Certifica-se de que o conteúdo ocupa 100% da tela */
 }
+
+ion-content {
+  --background: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
   .carrossel {
     margin-top: -32px;
   --background: radial-gradient(rgb(255, 255, 255), rgb(0, 0, 0)) !important;
@@ -10,12 +18,11 @@ body, ion-content {
   overflow-x: auto; /* Permite a rolagem horizontal */
   -webkit-overflow-scrolling: touch; /* Para rolagem suave em dispositivos móveis */
 }
-ion-content{
-  --background: radial-gradient(rgb(255, 255, 255), rgb(0, 0, 0)) !important;
 
-}
 ion-item {
-  --padding-start: 0;
+  --padding-start: 18px;
+  --background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
 }
 
 ion-item-sliding {
@@ -31,19 +38,29 @@ ion-item-sliding {
 ion-header{
   height: 45px;
 }
-ion-toolbar{
-  --background: radial-gradient(rgb(94, 84, 84), rgb(0, 0, 0)) !important;
-  color: rgb(0, 255, 4);
-  text-align: center;
-  font-size: 1.5rem;
-
-
+ion-toolbar {
+  --background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  height: 45px;
 }
-ion-button{
-  --background: radial-gradient(rgb(94, 84, 84), rgb(0, 0, 0)) !important;
-  color: rgb(0, 255, 4);
 
+ion-button {
+
+  margin: 10px;
+  --background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border: 2px;
+  --border-color: rgb(0, 255, 4);
+  max-width: 20rem;
 }
+
 ion-card{
   margin-bottom: 30px;
 }
+.divider{
+  border: none;           /* Remove a borda padrão */
+  height: 2px;            /* Altura da linha */
+  background-color: rgb(0, 255, 4);;  /* Cor da linha */
+  margin: 0;
+}
+

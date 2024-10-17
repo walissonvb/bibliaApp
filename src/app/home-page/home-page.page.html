@@ -1,9 +1,17 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>IGREJA C3</ion-title>
+    <ion-title slot="start">IGREJA C3</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="goToDetailPage(20)">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
+<hr class="divider">
 <ion-content>
   <ion-card *ngFor=" let dados of card">
     <img alt="hand of christ" [src]="dados.img" />    <ion-card-header>
@@ -12,13 +20,14 @@
     </ion-card-header>
 
     <ion-card-content>
-      {{dados.text}}
+      {{dados.frase}}
     </ion-card-content>
-    <ion-button (click)="goToDetalMeditacao(20)" >Leia mais</ion-button>
+    <ion-button fill="outline" expand="block" (click)="goToDetalMeditacao(1)" >Novo</ion-button>
+    <ion-button fill="outline" expand="block" (click)="goToDetalMeditacao(2)" >Leia mais</ion-button>
 
   </ion-card>
 
-  <ion-card>
+  <ion-card (click)="goToMinist(1)">
     <ion-card-header>
       <ion-card-title>Faça Parte</ion-card-title>
       <ion-card-subtitle>Conheça Os Minintérios</ion-card-subtitle>
@@ -52,9 +61,17 @@
           </ion-thumbnail>
           <ion-label>Kids</ion-label>
         </ion-item>
+        <ion-item lines="none">
+          <ion-thumbnail slot="start">
+            <img alt="Silhouette of mountains" src="https://d3tfn18lzrilkz.cloudfront.net/blogs.br.crossmap.com/app/uploads/2018/01/05175031/ben-wicks-Ns96HhR-b-c-unsplash-OFRwvhme-scaled.jpg" />
+          </ion-thumbnail>
+          <ion-label>Midia</ion-label>
+        </ion-item>
+
       </ion-list>
     </ion-card-content>
   </ion-card>
+
   <br>
 
 <div class="carrossel">
@@ -91,6 +108,6 @@
 </div>
 </ion-content>
   <ion-footer>
-    <ion-button expand="block" (click)="goToDetailPage(10)">Biblia Sagrada</ion-button>
+    <ion-button fill="outline" expand="block" (click)="goToDetailPage(10)">Biblia Sagrada</ion-button>
   </ion-footer>
 

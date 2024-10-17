@@ -1,0 +1,126 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title slot="start">Meditação</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="goToDetailPage(20)">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<hr class="divider">
+<ion-content>
+
+  <ion-content>
+  <ion-button fill="outline" expand="block" (click)="currentSection = 1">Ação Social</ion-button>
+  <ion-button fill="outline" expand="block" (click)="currentSection = 2">Louvor</ion-button>
+  <ion-button fill="outline" expand="block" (click)="currentSection = 3">Ensino</ion-button>
+  <ion-button fill="outline" expand="block" (click)="currentSection = 4">Kids</ion-button>
+
+    <ion-card *ngIf="currentSection === 1">
+      <h1>Ação Social</h1>
+      <h2>a igreja é os braços de Cristo, afagando os necessitados</h2>
+      <p>O ministério de <strong>Ação Social</strong> é <em>amor em movimento</em>.</p>
+
+      <p>A Bíblia diz em Tiago 1:27:</p>
+
+      <blockquote>
+        A religião pura e imaculada diante de nosso Deus e Pai é esta: Visitar os órfãos e as viúvas nas suas aflições e
+        guardar-se isento da corrupção do mundo. </blockquote>
+
+      <hr>
+
+      <p>Queridos irmãos e irmãs</p>
+      <p>O ministério de <strong>Ação social</strong> está sempre em movimento, promovendo eventos especial para apoiar
+        os necessitados de nossa comunidade.</p>
+      <p>Este é um chamado para todos os membros e amigos da igreja se unirem a nós como voluntários nesta missão
+        importante e eventual.</p>
+      <p><strong>Juntos</strong>, podemos fazer a diferença e levar <strong>Cristo</strong> para aqueles que mais
+        precisam. Sua participação é fundamental para o sucesso desse ministério.
+      <p> Traga seu coração aberto, disposição para ajudar.</p>
+      <hr>
+      <strong>
+        <p>Para mais informações e para confirmar sua presença, por favor, entre em contato com [Nome do Responsável]
+          pelo telefone [Número de Telefone] ou pelo e-mail [Endereço de E-mail].
+
+          Contamos com você</p>
+      </strong>
+
+    </ion-card>
+
+    <ion-card *ngIf="currentSection === 2">
+      <h1>Louvor</h1>
+      <h2>Adoração é fundamental pra avidenciarmos quem serve a quem.</h2>
+      <p>O ministério de <strong>Adoração</strong> é <em>confiçao da majestade de Cristo</em>.</p>
+
+      <p>A Bíblia diz nos Salmo 150:6</p>
+
+      <blockquote>
+        Todo ser que respira louve ao Senhor. Aleluia!
+     </blockquote>
+
+      <hr>
+
+      <p>Queridos irmãos e irmãs</p>
+      <p>Estamos felizes em anunciar que o Ministério <strong>Adoração</strong>está em busca de novos talentos! Se você tem aptidão para cantar ou tocar instrumentos e deseja usar suas habilidades para louvar a Deus, queremos convidá-lo a fazer parte do nosso grupo.</p>
+      <p> Todos os membros da igreja com habilidades musicais, sejam elas vocais ou instrumentais.</p>
+      <p><strong>Não importa</strong> seu nível de experiência, todos são bem-vindos! Se você sente o chamado para servir através da música, venha fazer parte do nosso ministério.
+        Contamos com você para juntos formarmos uma equipe ainda mais forte e abençoada!</p>
+      <hr>
+      <strong>
+        <p>Para mais informações e para confirmar sua presença, por favor, entre em contato com [Nome do Responsável]
+          pelo telefone [Número de Telefone] ou pelo e-mail [Endereço de E-mail].
+
+          Contamos com você</p>
+      </strong>
+
+    </ion-card>
+
+    <ion-card *ngIf="currentSection === 3">
+      <h1>Ensino</h1>
+      <h2>Ser professor dos ensinamentos de Cristo e um caminho longo que exige dedicação</h2>
+      <p>Venha fazer parte do ministério de <strong>Ensino</strong> é <em>fundamental no crescimento saudavel da igreja</em>.</p>
+
+      <p>A Bíblia diz Tiago 3:1</p>
+
+      <blockquote>
+        Meus irmãos, não vos torneis muitos de vós mestres, sabendo que havemos de receber maior juízo.
+      </blockquote>
+
+      <hr>
+
+      <p>Queridos irmãos e irmãs</p>
+      <p>Este é um chamado pra quem tem o carater forjado em Cristo <strong>Ensino</strong> é, sem dúvida, um ministerio que demanda muita dedicação, pra homens e mulhers fortes e alicerçados em Cristo.</p>
+      <p><strong>Antes</strong> de ensinar, é necessário aprender e aprender de maneira coerente com a <strong>Palavra</strong> Convidamos todos os Irmão e irmãs a participarem dos curso preparatórios. </p>
+      <hr>
+      <strong>
+        <p>Para mais informações e para confirmar sua presença, por favor, entre em contato com [Nome do Responsável]
+          pelo telefone [Número de Telefone] ou pelo e-mail [Endereço de E-mail].
+
+          Contamos com você</p>
+      </strong>
+    </ion-card>
+
+    <ion-card *ngIf="currentSection === 4">
+      <h1>Ministério Kids</h1>
+      <h2>Ensinar as crianças nos caminhos de Cristo é uma jornada recompensadora que exige dedicação</h2>
+      <p>Venha fazer parte do <strong>Ministério Kids</strong>, pois é <em>fundamental para o crescimento saudável da nossa igreja</em>.</p>
+      <p>A Bíblia diz em Mateus 19:14</p>
+      <blockquote>
+        "Deixai as crianças e não as impeçais de vir a mim, porque o reino dos céus é dos que são como elas."      </blockquote>
+      <hr>
+      <p>Queridos irmãos e irmãs,</p>
+      <p>O <strong>Ministério Kids</strong> é formado por professores dedicados, auxiliadores com aptidão para artesanato e pessoas prontas para auxiliar durante as ministrações para crianças. Além dos membros fixos, necessitamos de voluntários esporádicos para eventos maiores. Se você sente o chamado para servir, convidamos você a se juntar a nós!</p>
+      <p><strong>Antes</strong> de fazer parte efetivamente, é necessário aprender e aprender de maneira coerente com a <strong>Palavra</strong>. Convidamos todos os irmãos e irmãs a participarem dos palestras e treinamentos pra estar preparados pra lidar com os pequeninos.</p>
+      <hr>
+      <strong>
+      <p>Para mais informações e para confirmar a participação das suas crianças, por favor, entre em contato com [Nome do Responsável] pelo telefone [Número de Telefone] ou pelo e-mail [Endereço de E-mail]. Contamos com você e suas crianças!</p>
+      </strong>
+          </ion-card>
+<ion-card *ngIf="currentSection === 5">
+
+</ion-card>
+  </ion-content>

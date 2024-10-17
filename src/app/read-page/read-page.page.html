@@ -13,44 +13,69 @@
 </ion-header>
 <hr class="divider">
 <ion-content>
-  <form #f="ngForm" (ngSubmit)="enviando(f)">
-    <ion-toolbar>
-      <p>Título</p>
-    </ion-toolbar>
-    <ion-item>
-      <ion-input  label-placement="floating" placeholder="Digite o título" type="text" [(ngModel)]="dados.title" name="title"></ion-input>
-    </ion-item>
+  <div *ngIf="currentRead === 1">
+    <form #f="ngForm" (ngSubmit)="enviando(f)">
 
-    <ion-toolbar>
-      <p>Autor</p>
-    </ion-toolbar>
-    <ion-item>
-      <ion-input  label-placement="floating" placeholder="Digite o autor" type="text" [(ngModel)]="dados.author" name="author"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-input [(ngModel)]="dados.date" name="date" required readonly type="date"></ion-input>
+      </ion-item>
+      <ion-toolbar>
+        <p>Título</p>
+      </ion-toolbar>
+      <ion-item>
+        <ion-input label-placement="floating" placeholder="Digite o título" type="text" [(ngModel)]="dados.title"
+          name="title" required></ion-input>
+      </ion-item>
 
-    <ion-toolbar>
-      <p>Imagem</p>
-    </ion-toolbar>
-    <ion-item>
-      <ion-input  label-placement="floating" placeholder="URL da imagem" type="url" [(ngModel)]="dados.img" name="img"></ion-input>
-    </ion-item>
+      <ion-toolbar>
+        <p>Autor</p>
+      </ion-toolbar>
+      <ion-item>
+        <ion-input label-placement="floating" placeholder="Digite o autor" type="text" [(ngModel)]="dados.author"
+          name="author" required></ion-input>
+      </ion-item>
 
-    <ion-toolbar>
-      <p>Sub Título</p>
-    </ion-toolbar>
-    <ion-item>
-      <ion-input  label-placement="floating" placeholder="Digite o Sub título" type="text" [(ngModel)]="dados.frase" name="frase"></ion-input>
-    </ion-item>
+      <ion-toolbar>
+        <p>Imagem</p>
+      </ion-toolbar>
+      <ion-item>
+        <ion-input label-placement="floating" placeholder="URL da imagem" type="url" [(ngModel)]="dados.img" name="img"
+          required></ion-input>
+      </ion-item>
 
-    <ion-toolbar>
-      <p>Texto Longo</p>
-    </ion-toolbar>
-    <ion-item >
-      <ion-textarea label-placement="floating" placeholder="Digite o texto longo" [(ngModel)]="dados.text" name="text"></ion-textarea>
-    </ion-item>
-  </form>
+      <ion-toolbar>
+        <p>Sub Título</p>
+      </ion-toolbar>
+      <ion-item>
+        <ion-input label-placement="floating" placeholder="Digite o Sub título" type="text" [(ngModel)]="dados.frase"
+          name="frase" required></ion-input>
+      </ion-item>
+
+      <ion-toolbar>
+        <p>Texto Longo</p>
+      </ion-toolbar>
+      <ion-item>
+        <ion-textarea label-placement="floating" placeholder="Digite o texto longo" [(ngModel)]="dados.text" name="text"
+          required></ion-textarea>
+      </ion-item>
+      <ion-footer>
+        <ion-button class="boton" fill="outline" expand="block" type="submit">Publicar</ion-button>
+      </ion-footer>
+    </form>
+  </div>
+
+  <div *ngIf="currentRead === 2">
+    <ion-card *ngFor="let dados of card">
+      <h1>titulo</h1>
+      <hr>
+      <h2>{{dados.frase}}</h2>
+      <hr>
+      <img alt="hand of christ" [src]="dados.img" />
+      <hr>
+      <pre>{{dados.text}}</pre>
+
+      <p>{{dados.author}}</p>
+      <hr>
+    </ion-card>
+  </div>
 </ion-content>
-
-<ion-footer>
-  <ion-button class="boton" fill="outline" expand="block" type="submit">Publicar</ion-button>
-</ion-footer>
