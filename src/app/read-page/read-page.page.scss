@@ -39,13 +39,19 @@ ion-title {
   margin-top: -12px;
 }
 
-ion-button {
-  margin-top: -12px;
-  --background: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
-}
 p{
   margin-left: 20px;
+}
+h1{
+  margin-left: 20px;
+}
+h2{
+  margin-left: 20px;
+
+}
+pre{
+  margin-left: 20px;
+
 }
 ion-button {
 
@@ -54,11 +60,15 @@ ion-button {
   color: rgb(0, 0, 0);
   border: 2px;
   --border-color: rgb(0, 255, 4);
-  max-width: 20rem;
+  max-width: 30rem;
 }
 .divider{
   border: none;           /* Remove a borda padrão */
   height: 2px;            /* Altura da linha */
   background-color: rgb(0, 255, 4);;  /* Cor da linha */
   margin: 0;
+}
+ion-card{
+  margin-left: 15px;
+  margin-right: 15px;
 }
