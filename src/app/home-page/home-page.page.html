@@ -13,8 +13,8 @@
 </ion-header>
 <hr class="divider">
 <ion-content>
-  <ion-card *ngFor=" let dados of card">
-    <img alt="hand of christ" [src]="dados.img" />    <ion-card-header>
+  <ion-card *ngFor=" let dados of cardOne">
+    <img alt="hand of christ" [src]="dados.img" /> <ion-card-header>
       <ion-card-title>{{dados.title}}</ion-card-title>
       <ion-card-subtitle>{{dados.author}}</ion-card-subtitle>
     </ion-card-header>
@@ -22,8 +22,8 @@
     <ion-card-content>
       {{dados.frase}}
     </ion-card-content>
-    <ion-button fill="outline" expand="block" (click)="goToDetalMeditacao(1)" >Novo</ion-button>
-    <ion-button fill="outline" expand="block" (click)="goToDetalMeditacao(2)" >Leia mais</ion-button>
+    <ion-button fill="outline" expand="block" (click)="goToDetalMeditacao(1)">Novo</ion-button>
+    <ion-button fill="outline" expand="block" (click)="goToDetalMeditacao(2)">Leia mais</ion-button>
 
   </ion-card>
 
@@ -36,34 +36,39 @@
       <ion-list>
         <ion-item>
           <ion-thumbnail slot="start">
-            <img alt="Silhouette of mountains" src="https://th.bing.com/th/id/R.4cfd6f078c7831b0395b695da747fa85?rik=zn8%2fJOSHIuoe7Q&riu=http%3a%2f%2fwww.oceansaude.com.br%2fwp-content%2fuploads%2f2018%2f11%2fACAO-SOCIAL-03-1-1080x675.png&ehk=WkCmZXoeqKNHSA52kSd0%2bRdonfaaK3t8tGsUYg41TDc%3d&risl=&pid=ImgRaw&r=0" />
+            <img alt="Silhouette of mountains"
+              src="https://th.bing.com/th/id/R.4cfd6f078c7831b0395b695da747fa85?rik=zn8%2fJOSHIuoe7Q&riu=http%3a%2f%2fwww.oceansaude.com.br%2fwp-content%2fuploads%2f2018%2f11%2fACAO-SOCIAL-03-1-1080x675.png&ehk=WkCmZXoeqKNHSA52kSd0%2bRdonfaaK3t8tGsUYg41TDc%3d&risl=&pid=ImgRaw&r=0" />
           </ion-thumbnail>
           <ion-label>Ação Social</ion-label>
         </ion-item>
 
         <ion-item>
           <ion-thumbnail slot="start">
-            <img alt="Silhouette of mountains" src="https://th.bing.com/th/id/OIP.zYquHMIBIzxdIUiGuTb11wHaEc?rs=1&pid=ImgDetMain" />
+            <img alt="Silhouette of mountains"
+              src="https://th.bing.com/th/id/OIP.zYquHMIBIzxdIUiGuTb11wHaEc?rs=1&pid=ImgDetMain" />
           </ion-thumbnail>
           <ion-label>Louvor</ion-label>
         </ion-item>
 
         <ion-item>
           <ion-thumbnail slot="start">
-            <img alt="Silhouette of mountains" src="https://4.bp.blogspot.com/-pux29IKIm5c/VeSVcS4TQCI/AAAAAAAAqrM/VH1uFWGVTSI/s1600/p%25C3%25BAlpito%2Bpara%2Biglesia%2Bcristiana%2B_p%25C3%25BAlpito%2Biglesias%2Badventista_p%25C3%25BAlpito%2Bde%2Bmadera%2Bmoderno_venta%2Bde%2Bp%25C3%25BAlpitos%2Bpara%2Biglesias%2B3.jpg" />
+            <img alt="Silhouette of mountains"
+              src="https://4.bp.blogspot.com/-pux29IKIm5c/VeSVcS4TQCI/AAAAAAAAqrM/VH1uFWGVTSI/s1600/p%25C3%25BAlpito%2Bpara%2Biglesia%2Bcristiana%2B_p%25C3%25BAlpito%2Biglesias%2Badventista_p%25C3%25BAlpito%2Bde%2Bmadera%2Bmoderno_venta%2Bde%2Bp%25C3%25BAlpitos%2Bpara%2Biglesias%2B3.jpg" />
           </ion-thumbnail>
           <ion-label>Ensino</ion-label>
         </ion-item>
 
         <ion-item lines="none">
           <ion-thumbnail slot="start">
-            <img alt="Silhouette of mountains" src="https://d3tfn18lzrilkz.cloudfront.net/blogs.br.crossmap.com/app/uploads/2018/01/05175031/ben-wicks-Ns96HhR-b-c-unsplash-OFRwvhme-scaled.jpg" />
+            <img alt="Silhouette of mountains"
+              src="https://d3tfn18lzrilkz.cloudfront.net/blogs.br.crossmap.com/app/uploads/2018/01/05175031/ben-wicks-Ns96HhR-b-c-unsplash-OFRwvhme-scaled.jpg" />
           </ion-thumbnail>
           <ion-label>Kids</ion-label>
         </ion-item>
         <ion-item lines="none">
           <ion-thumbnail slot="start">
-            <img alt="Silhouette of mountains" src="https://d3tfn18lzrilkz.cloudfront.net/blogs.br.crossmap.com/app/uploads/2018/01/05175031/ben-wicks-Ns96HhR-b-c-unsplash-OFRwvhme-scaled.jpg" />
+            <img alt="Silhouette of mountains"
+              src="https://d3tfn18lzrilkz.cloudfront.net/blogs.br.crossmap.com/app/uploads/2018/01/05175031/ben-wicks-Ns96HhR-b-c-unsplash-OFRwvhme-scaled.jpg" />
           </ion-thumbnail>
           <ion-label>Midia</ion-label>
         </ion-item>
@@ -74,40 +79,15 @@
 
   <br>
 
-<div class="carrossel">
-<ion-item-sliding>
-  <ion-card class="card" (click)="cardOne()">
-    <img alt="hand of cristh" src="https://www.shutterstock.com/image-vector/biblical-vector-illustration-jesus-hand-260nw-2292077801.jpg" />
-    <ion-card-header>
-      <ion-card-title>Meditação Diaria</ion-card-title>
-      <ion-card-subtitle>joao 3:16</ion-card-subtitle>
-    </ion-card-header>
+  <div class="carrossel">
+    <ion-card class="card" *ngFor="let doc of currentDocs">
+      <img (click)="detalMeditacao(doc.date)" class="img" [src]="doc.img" alt="imagem" />
 
-    <ion-card-content>
-      Here's a small text description for the card content. Nothing more, nothing less.
-    </ion-card-content>
-    <ion-button (click)="goToDetalMeditacao(20)" >Leia mais</ion-button>
+      <ion-card-title class="title">{{ doc.title }}</ion-card-title>
 
-  </ion-card>
-  <ion-card class="card">
-    <img alt="hand of cristh" src="https://www.shutterstock.com/image-vector/biblical-vector-illustration-jesus-hand-260nw-2292077801.jpg" />
-    <ion-card-header>
-      <ion-card-title>Meditação Diaria</ion-card-title>
-      <ion-card-subtitle>joao 3:16</ion-card-subtitle>
-    </ion-card-header>
-
-    <ion-card-content>
-      Here's a small text description for the card content. Nothing more, nothing less.
-    </ion-card-content>
-    <ion-button (click)="goToDetalMeditacao(20)" >Leia mais</ion-button>
-
-  </ion-card>
-
-
-</ion-item-sliding>
-</div>
+    </ion-card>
+  </div>
 </ion-content>
-  <ion-footer>
-    <ion-button fill="outline" expand="block" (click)="goToDetailPage(10)">Biblia Sagrada</ion-button>
-  </ion-footer>
-
+<ion-footer>
+  <ion-button fill="outline" expand="block" (click)="goToDetailPage(10)">Biblia Sagrada</ion-button>
+</ion-footer>

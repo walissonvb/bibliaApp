@@ -14,11 +14,24 @@ ion-content {
 }
 
   .carrossel {
-    margin-top: -32px;
-  --background: radial-gradient(rgb(255, 255, 255), rgb(0, 0, 0)) !important;
+  margin-top: -32px;
   display: flex;
   overflow-x: auto; /* Permite a rolagem horizontal */
   -webkit-overflow-scrolling: touch; /* Para rolagem suave em dispositivos móveis */
+}
+.card {
+  height: 150px;
+  width: 500px;
+  margin-right: 10px; /* Espaçamento entre os cards */
+}
+.img {
+  height: 80%;
+
+}
+.title{
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+
 }
 
 ion-item {
@@ -32,11 +45,6 @@ ion-item-sliding {
   display: flex;
 }
 
-.card {
-  height: 150px;
-  width: 500px;
-  margin-right: 10px; /* Espaçamento entre os cards */
-}
 ion-header{
   height: 45px;
 }
@@ -59,6 +67,12 @@ ion-button {
 ion-card{
   margin-bottom: 30px;
 }
+
+img{
+  height: 100%;
+
+}
+
 .divider{
   border: none;           /* Remove a borda padrão */
   height: 2px;            /* Altura da linha */

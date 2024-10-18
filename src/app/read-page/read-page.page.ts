@@ -21,6 +21,8 @@ export class ReadPagePage implements OnInit {
     date: new Date().toISOString()
   }
   card : Meditacao [] = [];
+  cardOne : Meditacao [] = [];
+  filteredCard: Meditacao [] = [];
   currentRead: number;
   detailId: number | null = null;
   atualizar = false;
@@ -36,38 +38,48 @@ export class ReadPagePage implements OnInit {
 
   async ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
-    console.log('ID da rota:', id); // Verificar o ID recuperado da rota
+    console.log('ID da rota:', id);
 
-    // Verificar se os dados possuem a propriedade 'date'
+    // Formatar a data, se disponível
     if (this.dados.date) {
       this.dados.date = this.dados.date.split('T')[0];
     }
 
-    if (id === null) {
-      this.router.navigate(['/home-page']); // Se não houver 'id', redireciona para a home
-    } else {
-      if (id === '1') {
-        console.log('ID 1 detectado');
-        this.currentRead = 1; // Atualizando o valor de currentRead
-      } else if (id === '2') {
-        try {
-          // Aguardando a resposta da função readMeditRead
-          const response = await this.service.readMeditRead();
+    // Verifica se o ID é nulo, caso sim, navega para a home
+    if (!id) {
+      console.log('ID é nulo, redirecionando para home...');
+      await this.router.navigate(['/home-page']);
+      return;  // Encerrando a execução após redirecionar
+    }
 
-          // Verificando o conteúdo retornado
-          console.log('Dados recebidos:', response);
+    // Caso o ID seja 1
+    if (id === '1') {
+      console.log('ID 1 detectado');
+      this.currentRead = 1;
+      return;  // Encerrando a execução após configurar currentRead
+    }
 
-          // Atribuindo o resultado ao array 'card'
-          this.card = response;
-
-          // Atualizando o valor de currentRead
-          this.currentRead = 2;
-        } catch (error) {
-          console.error('Erro ao ler os dados:', error);
-        }
+    // Caso o ID seja 2
+    if (id === '2') {
+      try {
+        const response = await this.service.readMeditRead();
+        console.log('Dados recebidos para ID 2:', response);
+        this.card = response;
+        this.currentRead = 2;
+      } catch (error) {
+        console.error('Erro ao ler os dados para ID 2:', error);
       }
+      return;  // Encerrando a execução após tratar ID 2
+    }
+
+    // Caso o ID não seja 1 ou 2, chamar a função oldCard
+    try {
+      await this.oldCard(id);
+    } catch (error) {
+      console.error('Erro ao executar oldCard:', error);
     }
   }
+
     closeAll() {
     this.router.navigate(['/home-page']);
   }
@@ -118,6 +130,28 @@ export class ReadPagePage implements OnInit {
     // Navega para a página de detalhe passando o 'id' como parâmetro na URL
     this.router.navigate(['./home', id]);
 
+  }
+  async oldCard(id: string) {
+    console.log(id);
+    try {
+      // Lê todas as meditações
+      this.cardOne = await this.service.readMeditacao();
+      console.log('All Cards:', this.cardOne);
+
+      // Usar find para buscar o primeiro dado que corresponde ao critério (exemplo: data)
+      const cardFilter = this.cardOne.find(dados => dados.date === id); // Ajuste o critério conforme sua lógica
+console.log(cardFilter)
+      if (cardFilter) {
+        this.filteredCard = [cardFilter]; // Armazena o resultado como um array para usar no *ngFor
+        console.log('Filtered Card:', this.filteredCard);
+        this.currentRead = 3; // Atualiza o estado para exibir os cards filtrados
+      } else {
+        console.log('Nenhum dado encontrado para o critério especificado.');
+      }
+
+    } catch (error) {
+      console.error('Erro ao carregar as meditações:', error);
+    }
   }
 
 }
