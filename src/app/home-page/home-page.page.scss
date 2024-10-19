@@ -84,4 +84,22 @@ ion-card{
   margin-left: 15px;
   margin-right: 15px;
 }
+.card-imagem{
+  width: auto; /* Defina a largura desejada */
+  height: auto; /* Defina a altura desejada */
+  background-image: url('https://picsum.photos/seed/picsum/200/300');
+  background-size: cover; /* Faz a imagem cobrir toda a área */
+  background-position: center; /* Centraliza a imagem */
+  background-repeat: no-repeat; /* Impede que a imagem se repita */
+}
+ion-card-subtitle{
+  color: black;
+  font-size: 1.1rem;
+  margin: 10px;
+}
+ion-card-title{
+  color: black;
+  font-size: 1.3rem;
+  margin: 10px;
 
+}

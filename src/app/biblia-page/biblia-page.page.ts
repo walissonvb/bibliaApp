@@ -38,7 +38,6 @@ export class BibliaPagePage implements OnInit {
       console.error('Erro ao buscar livros:', response.statusText);
     }
   }
-
   // Buscar os livros da API
   async getboocks() {
     const response = await fetch('https://www.abibliadigital.com.br/api/books');

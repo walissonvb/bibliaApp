@@ -8,6 +8,7 @@
 </ion-header>
 
 <ion-content>
+
   <div *ngIf="showBooks && dataBoocks.length > 0">
     <ion-list>
       <ion-item *ngFor="let book of dataBoocks" (click)="getChap(book.chapters, book.abbrev.pt)">
