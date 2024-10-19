@@ -59,6 +59,11 @@ h2{
 }
 pre{
   margin-left: 20px;
+  white-space: pre-wrap; /* Permite que o texto quebre as linhas */
+  word-wrap: break-word; /* Quebra palavras longas, se necessário */
+  overflow-x: auto; /* Adiciona um scrollbar horizontal, se o conteúdo for muito grande */
+  max-width: 100%; /* Garante que o <pre> não ultrapasse a largura da tela */
+  box-sizing: border-box; /* Inclui padding e border dentro da largura total */
 
 }
 ion-button {
