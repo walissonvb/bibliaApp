@@ -14,7 +14,7 @@ export class HomePagePage implements OnInit {
   currentDocs: Meditacao[] = [];
   docIndex = 0;
   cardOne: Meditacao[] = [];
-  versiculoDiario: any={};
+  versiculoDiario: any = {};
 
   constructor(
     private servicoRead: ReadService,
@@ -25,7 +25,6 @@ export class HomePagePage implements OnInit {
 
   ngOnInit() {
     this.allCard();
-    this.getVers();
 
     this.servicoRead.readMeditacao().then(response => {
       this.card = response;
@@ -65,44 +64,43 @@ export class HomePagePage implements OnInit {
   }
 
   async getVers() {
-  const storedVersiculo = localStorage.getItem('versiculoDiario');
-  const storedDate = localStorage.getItem('versiculoDate');
-  const currentDate = new Date().getTime();
-  const storeImagem = localStorage.getItem('versiculoImagem')
+    const storedVersiculo = localStorage.getItem('versiculoDiario');
+    const storedDate = localStorage.getItem('versiculoDate');
+    const currentDate = new Date().getTime();
 
-  // Verifica se há um versículo salvo e se ainda está dentro das 24 horas
-  if (storedVersiculo && storedDate) {
-    const savedDate = new Date(storedDate).getTime();
-    const differenceInHours = (currentDate - savedDate) / (1000 * 60 * 60);
+    // Verifica se há um versículo salvo e se ainda está dentro das 24 horas
+    if (storedVersiculo && storedDate) {
+      const savedDate = new Date(storedDate).getTime();
+      const differenceInHours = (currentDate - savedDate) / (1000 * 60 * 60);
 
-    // Se o versículo foi salvo há menos de 24 horas, usa o versículo do localStorage
-    if (differenceInHours < 24) {
-      this.versiculoDiario = JSON.parse(storedVersiculo);
-      console.log('Usando versículo salvo:', this.versiculoDiario);
-      return;
+      // Se o versículo foi salvo há menos de 24 horas, usa o versículo do localStorage
+      if (differenceInHours < 24) {
+        this.versiculoDiario = JSON.parse(storedVersiculo);
+        console.log('Usando versículo salvo:', this.versiculoDiario);
+        return;
+      }
     }
-  }
 
-  // Se não há versículo salvo ou já passou mais de 24 horas, busca um novo
-  try {
-    console.log('Buscando novo versículo');
-    const version = 'nvi'; // Defina a versão da Bíblia que você quer
-    const response = await fetch(`https://www.abibliadigital.com.br/api/verses/${version}/random`);
+    // Se não há versículo salvo ou já passou mais de 24 horas, busca um novo
+    try {
+      console.log('Buscando novo versículo');
+      const version = 'nvi'; // Defina a versão da Bíblia que você quer
+      const response = await fetch(`https://www.abibliadigital.com.br/api/verses/${version}/random`);
 
-    if (!response.ok) {
-      console.error('Erro ao buscar o verso:', response.statusText);
-    } else {
-      this.versiculoDiario = await response.json();
+      if (!response.ok) {
+        console.error('Erro ao buscar o verso:', response.statusText);
+      } else {
+        this.versiculoDiario = await response.json();
 
-      // Salva o versículo e a data atual no localStorage
-      localStorage.setItem('versiculoDiario', JSON.stringify(this.versiculoDiario));
-      localStorage.setItem('versiculoDate', new Date().toString());
+        // Salva o versículo e a data atual no localStorage
+        localStorage.setItem('versiculoDiario', JSON.stringify(this.versiculoDiario));
+        localStorage.setItem('versiculoDate', new Date().toString());
 
-      console.log('Versículo salvo no localStorage:', this.versiculoDiario);
+        console.log('Versículo salvo no localStorage:', this.versiculoDiario);
+      }
+    } catch (error) {
+      console.error('Erro ao buscar o verso:', error);
     }
-  } catch (error) {
-    console.error('Erro ao buscar o verso:', error);
-  }
   }
 
   goToDetailPage(id: number) {
@@ -128,7 +126,7 @@ export class HomePagePage implements OnInit {
     console.log('Navegando para a página de ministérios, id:', id);
     this.router.navigate(['./ministerios', id]);
   }
-  async detalMeditacao(date: string){
+  async detalMeditacao(date: string) {
     console.log(date)
     this.router.navigate(['./read', date]);
 

@@ -3,15 +3,9 @@ body, ion-content {
   padding: 0;
   height: 100%; /* Certifica-se de que o conteúdo ocupa 100% da tela */
 }
-ion-content{
-  --background: radial-gradient(rgb(255, 255, 255), rgb(0, 0, 0)) !important;
-}
 
-ion-item, div {
+ion-item {
   --padding-start: 18px;
-  --background: black;
-  color: white;
-
 }
 
 ion-item-sliding {

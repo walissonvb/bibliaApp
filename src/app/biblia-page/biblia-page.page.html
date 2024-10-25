@@ -1,36 +1,37 @@
-<ion-header >
+<ion-header>
   <ion-toolbar>
-    <ion-title slot="start">A Palavra</ion-title>
-      <ion-button slot="end" (click)="closeAll()">
-        <ion-icon name="close-circle-outline"></ion-icon>
-      </ion-button>
+    <ion-title>A Palavra</ion-title>
+    <ion-button slot="end" (click)="closeAll()">
+      <ion-icon name="close-circle-outline"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <div *ngIf="showBooks && dataBoocks.length > 0">
+  <!-- Exibição da lista de livros -->
+  <div *ngIf="showBooks ">
     <ion-list>
-      <ion-item *ngFor="let book of dataBoocks" (click)="getChap(book.chapters, book.abbrev.pt)">
-        {{ book.name }}
+      <ion-item *ngFor="let book of dataBooks" (click)="getChapters(book.id)">
+        {{ book?.name }}
       </ion-item>
     </ion-list>
   </div>
 
-  <!-- Lista de capítulos -->
-  <div *ngIf="showChapters">
+  <!-- Lista de capítulos do livro selecionado -->
+  <div *ngIf="showChapters ">
     <ion-list>
-      <ion-item *ngFor="let chap of seletctedBookChap" (click)="getVersiculo(chap)">
-        Capítulo {{ chap }}
+      <ion-item *ngFor="let chap of selectedChapters" (click)="getVerses(chap.id)">
+        Capítulo {{ chap?.number }}
       </ion-item>
     </ion-list>
   </div>
 
   <!-- Exibição dos versículos -->
-  <div class="read" *ngIf="showVerses">
+  <div class="eb-container" *ngIf="showVerses">
     <ion-list>
-      <ion-item *ngFor="let verse of chapterData.verses">
-        {{ verse.number }} - {{ verse.text }}
+      <ion-item *ngFor="let verse of chapterData">
+        {{ verse?.content }}
       </ion-item>
     </ion-list>
   </div>
