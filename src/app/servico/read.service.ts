@@ -24,14 +24,14 @@ private readCollection = collection(this.firebaseService.db, "meditacao")
 
   async readMeditacao(){
     try {
-      const user = 'admin';
+      const user = await firstValueFrom(this.firebaseService.authState);
 
       if (!user) {
         console.log('Nenhum usuário autenticado.');
         return [];
       }
 
-      const userId = user;
+      const userId = user.uid;
       console.log(`ID do usuário autenticado: ${userId}`);
 
       const querySnapshot = await getDocs(query(this.readCollection, where('userId', '==', userId)));
@@ -51,14 +51,14 @@ private readCollection = collection(this.firebaseService.db, "meditacao")
 
   async readMeditRead() {
     try {
-      const user = 'admin'; // ID do usuário autenticado, por exemplo
+      const user = await firstValueFrom(this.firebaseService.authState);
 
       if (!user) {
         console.log('Nenhum usuário autenticado.');
         return [];
       }
 
-      const userId = user;
+      const userId = user.uid;
       console.log(`ID do usuário autenticado: ${userId}`);
 
       // Query ordenada pela data e limitada aos documentos mais recentes

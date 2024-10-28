@@ -14,7 +14,32 @@ export class HomePagePage implements OnInit {
   currentDocs: Meditacao[] = [];
   docIndex = 0;
   cardOne: Meditacao[] = [];
-  versiculoDiario: any = {};
+  inspiraçãoDiaria = [
+  "JER.29.11",
+  "PSA.23",
+  "1COR.4.4-8",
+  "PHP.4.13",
+  "JHN.3.16",
+  "ROM.8.28",
+  "ISA.41.10",
+  "PSA.46.1",
+  "GAL.5.22-23",
+  "HEB.11.1",
+  "2TI.1.7",
+  "1COR.10.13",
+  "PRO.22.6",
+  "ISA.40.31",
+  "JOS.1.9",
+  "HEB.12.2",
+  "MAT.11.28",
+  "ROM.10.9-10",
+  "PHP.2.3-4",
+  "MAT.5.43-44",
+  ];
+  selectedBookVers: string = '65eec8e0b60e656b-01'; // Exemplo de versão da Bíblia
+  API_KEY: string = '78da9dd8b04098c1b5c3027819a3e16a'; // Sua chave de API
+  versiculoDiario:any[] = []; // Ajuste para string em vez de array
+  verseRef: string = '';
 
   constructor(
     private servicoRead: ReadService,
@@ -23,8 +48,9 @@ export class HomePagePage implements OnInit {
     this.currentRead = 0;
   }
 
-  ngOnInit() {
-    this.allCard();
+ async ngOnInit() {
+   await this.allCard();
+   await this.getVersiculoDoDia();
 
     this.servicoRead.readMeditacao().then(response => {
       this.card = response;
@@ -63,40 +89,31 @@ export class HomePagePage implements OnInit {
     }
   }
 
-  async getVers() {
-    const storedVersiculo = localStorage.getItem('versiculoDiario');
-    const storedDate = localStorage.getItem('versiculoDate');
-    const currentDate = new Date().getTime();
+  async getVersiculoDoDia() {
+    const currentDate = new Date();
+    const currentDay = currentDate.getDate(); // Dia do mês
 
-    // Verifica se há um versículo salvo e se ainda está dentro das 24 horas
-    if (storedVersiculo && storedDate) {
-      const savedDate = new Date(storedDate).getTime();
-      const differenceInHours = (currentDate - savedDate) / (1000 * 60 * 60);
+    // Seleciona um versículo baseado no dia do mês
+    const verseIndex = (currentDay - 1) % this.inspiraçãoDiaria.length;
+    const verseID = this.inspiraçãoDiaria[verseIndex];
+    this.verseRef = verseID; // Atribua aqui
 
-      // Se o versículo foi salvo há menos de 24 horas, usa o versículo do localStorage
-      if (differenceInHours < 24) {
-        this.versiculoDiario = JSON.parse(storedVersiculo);
-        console.log('Usando versículo salvo:', this.versiculoDiario);
-        return;
-      }
-    }
-
-    // Se não há versículo salvo ou já passou mais de 24 horas, busca um novo
+    // Faz a chamada à API para buscar o versículo
     try {
-      console.log('Buscando novo versículo');
-      const version = 'nvi'; // Defina a versão da Bíblia que você quer
-      const response = await fetch(`https://www.abibliadigital.com.br/api/verses/${version}/random`);
-
+      console.log('Buscando novo versículo:', verseID);
+      const response = await fetch(`https://api.scripture.api.bible/v1/bibles/${this.selectedBookVers}/search?query=${verseID}`, {
+        headers: {
+          'api-key': this.API_KEY
+        }
+      });
       if (!response.ok) {
         console.error('Erro ao buscar o verso:', response.statusText);
       } else {
-        this.versiculoDiario = await response.json();
-
-        // Salva o versículo e a data atual no localStorage
-        localStorage.setItem('versiculoDiario', JSON.stringify(this.versiculoDiario));
-        localStorage.setItem('versiculoDate', new Date().toString());
-
-        console.log('Versículo salvo no localStorage:', this.versiculoDiario);
+        const verseData = await response.json();
+        const passage = verseData.data.passages[0];
+        const content = passage.content; // Extrai o conteúdo do versículo
+        this.versiculoDiario = content; // Armazena o conteúdo no versiculoDiario
+        console.log('Versículo do dia:', this.versiculoDiario);
       }
     } catch (error) {
       console.error('Erro ao buscar o verso:', error);
@@ -104,7 +121,8 @@ export class HomePagePage implements OnInit {
   }
 
   goToDetailPage(id: number) {
-    this.router.navigate(['./biblia', id]);
+    this.router.navigate(['./login', id]);
+
   }
 
   goToDetalMeditacao(id: number) {
