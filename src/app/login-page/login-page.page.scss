@@ -1,5 +1,118 @@
-body {
-  margin: 0;
+
+.main{
   padding: 0;
-  height: 100%; /* Certifica-se de que o conteúdo ocupa 100% da tela */
+  margin: 0;
+  box-sizing: border-box;
+}
+ion-content {
+  --background: url('https://live.staticflickr.com/65535/54099909328_33937b6968.jpg') no-repeat center center / cover;
+  height: 100vh; /* Altura total da tela */
+  width: 100%; /* Largura total da tela */
+}
+.externo{
+  flex-direction: column;
+
+}
+.interno{
+  margin-top: 30px;
+  margin-left: 35px;
+  width: 110%;
+  border: 5px solid rgb(0, 0, 0);
+  border-bottom-right-radius: 70px;
+  border-top-right-radius: 70px;
+  border-bottom-left-radius: 70px;
+  background: rgba(252, 253, 253, 0.534);
+  --ion-background-color: rgba(0, 255, 136, 0.4);
+  height: 80vh; /* Altura total da tela */
+
+}
+.div-input {
+  border-radius: 05px;
+  border: 1px solid #000;
+  margin: 25px;
+  background: rgba(49, 49, 48, 0.4) !important;
+  color: rgb(248, 247, 247);
+
+}
+.input-input{
+  --background: rgba(49, 49, 48);
+
+}
+ion-button {
+  border: 1px solid #000;
+  border-radius: 5px;
+  color: white;
+  --background: rgba(49, 49, 48) !important;
+  display: block;
+  margin-right: 50px;
+  margin-left: 50px;
+}
+.class-one{
+  margin-left: 50px;
+  color: rgb(0, 0, 0);
+  font-size: 50px; /* Aumenta o tamanho do texto */
+}
+.class-two{
+  color: rgb(255, 255, 255);
+  font-size: 50px; /* Aumenta o tamanho do texto */
+}
+.class-tree {
+  margin-top: 35px;
+  margin-right: 100px;
+  margin-left: 300px;
+  width: 50%;
+  border: 5px solid rgb(255, 255, 255);
+  border-bottom-right-radius: 70px;
+  border-top-right-radius: 70px;
+  border-bottom-left-radius: 70px;
+  background: rgba(252, 253, 253, 0.534);
+  height: 80vh; /* Altura total da tela */
+}
+.paragrafer{
+  color: rgb(0, 0, 0);
+  font-size: 20px; /* Aumenta o tamanho do texto */
+  margin-left: 50px;
+
+}
+.title{
+  color: rgb(0, 0, 0);
+  font-size: 30px; /* Aumenta o tamanho do texto */
+  margin-left: 50px;
+
+}
+@media screen and (max-width: 600px) {
+  .externo, .interno, .class-tree {
+    width: 90%;
+    margin-left: 9px;
+    margin-right: 0px;
+  }
+  .interno {
+    max-height: 80vh; /* Altura máxima */
+  }
+  .class-tree {
+    width: 90%;
+    margin-left: 15px;
+    margin-right: 25px;
+    margin-bottom: 100px;
+    height: 90vh; /* Altura total da tela */
+
+  }
+.title{
+  font-size: 20px; /* Aumenta o tamanho do texto */
+
+}
+.paragrafer{
+  font-size: 15px; /* Aumenta o tamanho do texto */
+  color: #000;
+
+}
+ion-button {
+  border: 1px solid #000;
+  border-radius: 5px;
+  color: white;
+  --background: rgba(49, 49, 48) !important;
+  display: block;
+  margin-right: 50px;
+  margin-left: 50px;
+}
 }
