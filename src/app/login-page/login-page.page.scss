@@ -1,118 +1,122 @@
-
-.main{
+/* Fundo e configuração geral */
+.main {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
 }
+
 ion-content {
   --background: url('https://live.staticflickr.com/65535/54099909328_33937b6968.jpg') no-repeat center center / cover;
-  height: 100vh; /* Altura total da tela */
-  width: 100%; /* Largura total da tela */
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.externo{
+
+.externo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
-
 }
-.interno{
-  margin-top: 30px;
-  margin-left: 35px;
-  width: 110%;
-  border: 5px solid rgb(0, 0, 0);
-  border-bottom-right-radius: 70px;
-  border-top-right-radius: 70px;
-  border-bottom-left-radius: 70px;
-  background: rgba(252, 253, 253, 0.534);
-  --ion-background-color: rgba(0, 255, 136, 0.4);
-  height: 80vh; /* Altura total da tela */
 
+.interno {
+  width: 90%; /* Ajuste de largura para manter elementos dentro da tela */
+  margin-top: 10%;
+  max-width: 500px; /* Limita a largura para telas maiores */
+  text-align: center;
+  padding: 20px; /* Espaçamento interno */
+  background-color: rgba(255, 255, 255, 0.5); /* Fundo leve para contraste */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
 }
+
+/* Estilo para o título h1 */
+.class-one {
+  color: rgb(0, 0, 0);
+  font-size: 36px; /* Tamanho ajustado para manter o layout */
+  margin-top: 0; /* Remove o espaço extra no topo */
+  margin-bottom: 20px; /* Espaço abaixo do título */
+  padding: 0 10px; /* Padding lateral para centralizar */
+}
+
+/* Estilos para campos de input */
 .div-input {
-  border-radius: 05px;
+  border-radius: 5px;
   border: 1px solid #000;
-  margin: 25px;
-  background: rgba(49, 49, 48, 0.4) !important;
-  color: rgb(248, 247, 247);
-
+  background: rgba(49, 49, 48, 0.4);
+  margin-bottom: 15px; /* Espaçamento entre inputs */
+  padding: 5px 10px; /* Ajuste para evitar que ultrapasse a tela */
 }
-.input-input{
-  --background: rgba(49, 49, 48);
 
+.input-input {
+  --background: transparent;
+  color: white;
 }
+
+/* Estilos para botões */
 ion-button {
   border: 1px solid #000;
   border-radius: 5px;
   color: white;
   --background: rgba(49, 49, 48) !important;
+  width: 80%;
+  max-width: 300px;
+  margin: 10px auto;
   display: block;
-  margin-right: 50px;
-  margin-left: 50px;
 }
-.class-one{
-  margin-left: 50px;
-  color: rgb(0, 0, 0);
-  font-size: 50px; /* Aumenta o tamanho do texto */
-}
-.class-two{
-  color: rgb(255, 255, 255);
-  font-size: 50px; /* Aumenta o tamanho do texto */
-}
-.class-tree {
-  margin-top: 35px;
-  margin-right: 100px;
-  margin-left: 300px;
-  width: 50%;
-  border: 5px solid rgb(255, 255, 255);
-  border-bottom-right-radius: 70px;
-  border-top-right-radius: 70px;
-  border-bottom-left-radius: 70px;
-  background: rgba(252, 253, 253, 0.534);
-  height: 80vh; /* Altura total da tela */
-}
-.paragrafer{
-  color: rgb(0, 0, 0);
-  font-size: 20px; /* Aumenta o tamanho do texto */
-  margin-left: 50px;
 
+/* Estilos de grupo de radio buttons */
+.div-select {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
+  margin: 20px auto;
+  border-radius: 8px;
 }
-.title{
-  color: rgb(0, 0, 0);
-  font-size: 30px; /* Aumenta o tamanho do texto */
-  margin-left: 50px;
 
+ion-item {
+  --background: transparent;
+  width: 100%;
+  justify-content: center;
+  border: 1px solid #007bff;
+  border-radius: 8px;
+  margin: 5px 0;
 }
-@media screen and (max-width: 600px) {
-  .externo, .interno, .class-tree {
-    width: 90%;
-    margin-left: 9px;
-    margin-right: 0px;
-  }
-  .interno {
-    max-height: 80vh; /* Altura máxima */
-  }
-  .class-tree {
-    width: 90%;
-    margin-left: 15px;
-    margin-right: 25px;
-    margin-bottom: 100px;
-    height: 90vh; /* Altura total da tela */
 
-  }
-.title{
-  font-size: 20px; /* Aumenta o tamanho do texto */
-
+ion-radio {
+  --color: #007bff;
+  --background: transparent;
 }
-.paragrafer{
-  font-size: 15px; /* Aumenta o tamanho do texto */
+
+ion-radio-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+ion-label {
+  font-size: 18px;
   color: #000;
+  padding: 5px;
+}
 
-}
-ion-button {
-  border: 1px solid #000;
-  border-radius: 5px;
-  color: white;
-  --background: rgba(49, 49, 48) !important;
-  display: block;
-  margin-right: 50px;
-  margin-left: 50px;
-}
+/* Estilo responsivo */
+@media screen and (max-width: 600px) {
+  .interno {
+    width: 90%;
+    max-width: 400px;
+    padding: 15px;
+  }
+
+  .class-one {
+    font-size: 28px;
+  }
+
+  ion-button, .div-input, .div-select {
+    max-width: 100%;
+    width: 100%;
+  }
 }

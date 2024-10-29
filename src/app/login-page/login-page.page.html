@@ -1,56 +1,74 @@
-
 <main>
-<ion-content>
-        <ion-row>
-        <ion-col class="externo">
-          <div class="interno" *ngIf="showLoginForm">
-            <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
-              <h1 class="class-one">Login</h1>
-              <div class="div-input">
-                <ion-input class="input-input" [(ngModel)]="dados.email" name="email"
-                  placeholder="Digite Seu e-mail Aqui"></ion-input>
-              </div>
-              <div class="div-input">
-                <ion-input class="input-input" [(ngModel)]="dados.password" name="password"
-                  placeholder="Digite Sua Senha Aqui"></ion-input>
-              </div>
-              <ion-button type="submit">{{loginButtonText}}</ion-button>
-              <ion-button type="button" (click)="toggleForm()">{{registerButtonText}}</ion-button>
-            </form>
-          </div>
+  <ion-content>
+    <ion-row>
+      <ion-col class="externo">
+        <div class="interno" *ngIf="currentSection === 1">
+          <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+            <h1 class="class-one">Login</h1>
+            <div class="div-input">
+              <ion-input class="input-input" [(ngModel)]="dados.email" name="email"
+                placeholder="Digite Seu e-mail Aqui"></ion-input>
+            </div>
+            <div class="div-input">
+              <ion-input class="input-input" [(ngModel)]="dados.password" name="password"
+                placeholder="Digite Sua Senha Aqui"></ion-input>
+            </div>
+            <ion-button type="submit">{{loginButtonText}}</ion-button>
+            <ion-button type="button" (click)="currentSection = 2">{{registerButtonText}}</ion-button>
+          </form>
+        </div>
 
-          <!-- Seção do formulário de cadastro -->
-          <div class="interno" *ngIf="!showLoginForm">
-            <form #registerForm="ngForm" (ngSubmit)="cadastrar(registerForm)">
-              <h1 class="class-one">Cadastro</h1>
-              <div class="div-input">
-                <ion-input class="input-input" [(ngModel)]="dados.email" name="email"
-                  placeholder="Digite seu e-mail aqui"></ion-input>
-              </div>
-              <div class="div-input">
-                <ion-input class="input-input" [(ngModel)]="dados.password" name="password"
-                  placeholder="Digite sua senha aqui"></ion-input>
-              </div>
-              <ion-button type="submit">{{loginButtonText0}}</ion-button>
-              <ion-button type="button" (click)="toggleForm()">{{registerButtonText0}}</ion-button>
-            </form>
-          </div>
+        <!-- Seção do formulário de cadastro -->
+        <div class="interno" *ngIf="currentSection === 2">
+          <form #registerForm="ngForm" (ngSubmit)="cadastrar(registerForm)">
+            <h1 class="class-one">Cadastro</h1>
+            <div class="div-input">
+              <ion-input class="input-input" [(ngModel)]="dados.email" name="email"
+                placeholder="Digite seu e-mail aqui"></ion-input>
+            </div>
 
-        </ion-col>
+            <div class="div-input">
+              <ion-input class="input-input" [(ngModel)]="dados.password" name="password"
+                placeholder="Digite sua senha aqui"></ion-input>
+            </div>
 
-        <ion-col class="class-tree">
-          <h1 class="title">Cosmic Rebelion</h1>
-          <p class="paragrafer">
+            <div class="div-input">
+              <ion-input class="input-input" [(ngModel)]="dados.foto" name="foto"
+                placeholder="link da sua foto"></ion-input>
+            </div>
 
-            Para o Crescimento Intelectual e Espiritual
+            <div class="div-select">
+              <p class="paragrafer01">Congregação</p>
+              <ion-radio-group [(ngModel)]="dados.congregacao" name="congregacao">
+                <ion-item lines="none">
+                  <ion-label>C3 IGREJA</ion-label>
+                  <ion-radio slot="end" value="C3 IGREJA"></ion-radio>
+                </ion-item>
+                <ion-item lines="none">
+                  <ion-label>BATISTA ELSHADAY</ion-label>
+                  <ion-radio slot="end" value="BATISTA ELSHADAY"></ion-radio>
+                </ion-item>
+                <ion-item lines="none">
+                  <ion-label>OITAVA IGREJA</ion-label>
+                  <ion-radio slot="end" value="OITAVA IGREJA"></ion-radio>
+                </ion-item>
+                <ion-item lines="none">
+                  <ion-label>IDPB</ion-label>
+                  <ion-radio slot="end" value="IDPB"></ion-radio>
+                </ion-item>
+                <ion-item lines="none">
+                  <ion-label>VISITANTE</ion-label>
+                  <ion-radio slot="end" value="VISITANTE"></ion-radio>
+                </ion-item>
+              </ion-radio-group>
+            </div>
 
-            Nosso aplicativo de igrejas foi desenvolvido para proporcionar uma jornada de crescimento intelectual e espiritual para todos os usuários. Acreditamos que a fé e o conhecimento andam lado a lado, e por isso, criamos uma plataforma que une ensinamentos bíblicos com ferramentas modernas de aprendizado.
-
-            Nosso objetivo é ser uma ferramenta essencial para todos que desejam crescer na fé e no entendimento das Escrituras. Junte-se a nós e transforme sua jornada espiritual e intelectual.</p>
-
-        </ion-col>
-
-      </ion-row>
+            <ion-button type="submit">{{loginButtonText0}}</ion-button>
+            <ion-button type="button" (click)="currentSection = 1 ">{{registerButtonText0}}</ion-button>
+          </form>
+        </div>
+      </ion-col>
+    </ion-row>
 
   </ion-content>
 </main>

@@ -14,13 +14,14 @@ export class LoginPagePage {
   registerButtonText = 'Sem cadastro? Clique aqui';
   loginButtonText0 = 'Cadastrar';
   registerButtonText0 = 'Já tem cadastro? faça Login!';
-  showLoginForm = true;
+  currentSection: number = 1;
 
   dados: User = {
     id: '',
     email: '',
     password: '',
     admin: false,
+    congregacao: 'C3 IGREJA | BATISTA ELSHADAY | OITAVA IGREJA | IDPB | VISITANTE',
     foto: '',
   };
 
@@ -33,7 +34,7 @@ export class LoginPagePage {
 
 
   async login(form: NgForm) {
-    const { email, password } = form.value;
+    const { email, password, admin,  } = form.value;
     try {
       const userId = await this.servicoLogin.login(email, password);
       if (userId) {
@@ -66,29 +67,19 @@ export class LoginPagePage {
   }
 
   async cadastrar(form: NgForm) {
-    const { email, password } = form.value;
-    console.log(email, password)
+    const { email, password, congregacao, foto } = form.value;
     try {
-      const userId = await this.servicoLogin.register(email, password);
+      const userId = await this.servicoLogin.register(email, password, false, congregacao, foto);
       if (userId) {
-        this.dados.id = userId;
         console.log('Cadastro Realizado Com Sucesso!');
-        if (await this.modalCtrl.getTop()) {
-          this.modalCtrl.dismiss(userId);
-        }
-        this.showToast('Cadastro Realizado Com Sucesso!', 'success')
+        this.currentSection = 1; // Altera o valor de currentSection para 1
+        this.showToast('Cadastro Realizado Com Sucesso!', 'success');
       }
     } catch (error) {
       console.error('Erro ao cadastrar:', error);
-      this.showToast('Erro ao Cadastrar', 'danger')
-      if (await this.modalCtrl.getTop()) {
-        this.modalCtrl.dismiss();
-      }
+      this.showToast('Erro ao Cadastrar', 'danger');
+      this.currentSection = 1; // Altera o valor de currentSection para 1 também em caso de erro
     }
-  }
-
-  toggleForm() {
-    this.showLoginForm = !this.showLoginForm;
   }
 
   async showToast(message: string, color: 'success' | 'danger') {
