@@ -8,6 +8,7 @@ import { ReadService, Meditacao } from '../servico/read.service';
   styleUrls: ['./home-page.page.scss'],
 })
 export class HomePagePage implements OnInit {
+  currentSection: number = 7;
   card: Meditacao[] = [];
   cardFilter: Meditacao[] = [];
   currentRead: number;
@@ -120,8 +121,8 @@ export class HomePagePage implements OnInit {
     }
   }
 
-  goToDetailPage(id: number) {
-    this.router.navigate(['./login', id]);
+  goToDetailPage() {
+    this.router.navigate(['./login-page']);
 
   }
 

@@ -1,7 +1,7 @@
-<ion-header >
+<ion-header>
   <ion-toolbar>
     <ion-buttons slot="end">
-      <ion-button (click)="goToDetailPage(20)">
+      <ion-button (click)="goToDetailPage()">
         <ion-icon name="close-circle-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -11,9 +11,9 @@
 
 <ion-content>
   <ion-card class="card-imagem" *ngIf="versiculoDiario">
-      <ion-card-title [innerHTML]="versiculoDiario">
-      </ion-card-title>
-      <ion-card-subtitle>{{verseRef}}</ion-card-subtitle>
+    <ion-card-title [innerHTML]="versiculoDiario">
+    </ion-card-title>
+    <ion-card-subtitle>{{verseRef}}</ion-card-subtitle>
 
   </ion-card>
 
@@ -92,7 +92,77 @@
 
     </ion-card>
   </div>
+
+  <div>
+    <h2>Pregaçoes</h2>
+    <div>
+      <ion-button fill="outline" expand="block" (click)="currentSection = 1">Charles Spurgeon</ion-button>
+      <ion-card class="card" *ngIf="currentSection === 1">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/vvO_sLkKQKM?si=2lGydBDIelU2El-W"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+        </iframe>
+      </ion-card>
+    </div>
+
+    <div>
+      <ion-button fill="outline" expand="block" (click)="currentSection = 2">Hernandes Dias Lopes</ion-button>
+      <ion-card class="card" *ngIf="currentSection === 2">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/l6QAXLx5vLo?si=7ZDmxAiD0qJSXxxo"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+        </iframe>
+      </ion-card>
+    </div>
+
+    <div>
+      <ion-button fill="outline" expand="block" (click)="currentSection = 3">Luciano Subira</ion-button>
+      <ion-card class="card" *ngIf="currentSection === 3">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/qm4UCNNX6ZQ?si=Zv6_uBaDf4v8I4QT"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+        </iframe>
+
+      </ion-card>
+    </div>
+
+    <div>
+      <ion-button fill="outline" expand="block" (click)="currentSection = 4">Augusto Nicodemos</ion-button>
+      <ion-card class="card" *ngIf="currentSection === 4">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/5DhkUl931eo?si=HLHXEehAO-PKe2Zg"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </ion-card>
+    </div>
+
+    <div>
+      <ion-button fill="outline" expand="block" (click)="currentSection = 5">Jonas Madureira</ion-button>
+      <ion-card class="card" *ngIf="currentSection === 5">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/EmMczQywiJg?si=YeJWF3ZfjF3gk78D"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+        </iframe>
+      </ion-card>
+    </div>
+
+    <div>
+      <ion-button fill="outline" expand="block" (click)="currentSection = 6">Josemar Bessa</ion-button>
+      <ion-card class="card" *ngIf="currentSection === 6">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/bvqPZhcoD4Y?si=JF3p9Ur5vC1QKEvH"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+        </iframe>
+      </ion-card>
+    </div>
+  </div>
+
 </ion-content>
 <ion-footer>
-  <ion-button fill="outline" expand="block" (click)="goToDetailPage(10)">Biblia Sagrada</ion-button>
+  <ion-button class="butto-biblie" fill="outline" expand="block" (click)="goToDetailPage()">Biblia Sagrada</ion-button>
 </ion-footer>

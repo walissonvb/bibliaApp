@@ -68,7 +68,7 @@ ion-button {
   --background: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
   border: 2px;
-  --border-color: rgb(0, 255, 4);
+  --border-color:rgb(0, 171, 194);;
   max-width: 30rem;
 }
 
@@ -83,7 +83,7 @@ img {
 .divider {
   border: none;           /* Remove a borda padrão */
   height: 2px;            /* Altura da linha */
-  background-color: rgb(0, 255, 4); /* Cor da linha */
+  background-color: rgb(0, 171, 194); /* Cor da linha */
   margin: 0;
 }
 
@@ -113,3 +113,24 @@ ion-card-title {
   font-size: 1.3rem;
   margin: 10px;
 }
+.video-avatar {
+  width: 40px; /* Ajusta o tamanho para ser menor */
+  height: 40px;
+  overflow: hidden;
+  border-radius: 50%; /* Mantém o formato circular */
+}
+
+h2 {
+  margin: 50px;
+}
+.butto-biblie{
+  --background: rgb(78, 180, 194);
+  color: rgb(0, 0, 0);
+  --border: 1px;
+  --border-color: rgb(0, 171, 194);
+
+}
+
+
+
+
