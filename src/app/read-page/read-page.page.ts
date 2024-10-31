@@ -106,7 +106,7 @@ export class ReadPagePage implements OnInit {
     } else {
       this.showErrorToast('Por favor, preencha todos os campos obrigatórios.');
     }
-    this.goToDetailPage(10);
+    this.goToDetailPage();
   }
   async showSuccessToast(message: string) {
     const toast = await this.toastCtrl.create({
@@ -126,9 +126,9 @@ export class ReadPagePage implements OnInit {
     toast.present();
   }
 
-  goToDetailPage(id: number) {
+  goToDetailPage() {
     // Navega para a página de detalhe passando o 'id' como parâmetro na URL
-    this.router.navigate(['./home', id]);
+    this.router.navigate(['./home-page']);
 
   }
   async oldCard(id: string) {

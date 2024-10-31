@@ -16,9 +16,9 @@ export class MinisteriosPagePage  {
 
   ) { }
 
-  goToDetailPage(id: number) {
+  goToDetailPage() {
     // Navega para a página de detalhe passando o 'id' como parâmetro na URL
-    this.router.navigate(['./home', id]);
+    this.router.navigate(['./home-page']);
 
   }
 }
