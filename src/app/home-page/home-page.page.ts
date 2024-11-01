@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ReadService, Meditacao } from '../servico/read.service';
-
+import { DateChurchService, DateChurch } from '../servico/date-church.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.page.html',
   styleUrls: ['./home-page.page.scss'],
 })
 export class HomePagePage implements OnInit {
+  dateChurch: DateChurch[] = [];
   currentSection: number = 7;
   card: Meditacao[] = [];
   cardFilter: Meditacao[] = [];
@@ -45,11 +47,14 @@ export class HomePagePage implements OnInit {
   constructor(
     private servicoRead: ReadService,
     private router: Router,
+    private servicoDateC: DateChurchService,
+    private afAuth: AngularFireAuth
   ) {
     this.currentRead = 0;
   }
 
  async ngOnInit() {
+   await this.getDateC();
    await this.allCard();
    await this.getVersiculoDoDia();
 
@@ -69,6 +74,21 @@ export class HomePagePage implements OnInit {
     }).catch(error => {
       console.error('Erro ao carregar meditações:', error);
     });
+  }
+
+ async getDateC(){
+  try {
+    const user = await this.afAuth.currentUser;
+    if (user) {
+      const userId = user.uid;
+      console.log(userId)
+      this.dateChurch = await this.servicoDateC.readDateChurch();
+      console.log(this.dateChurch)
+
+    }
+  } catch (error) {
+    console.error('Erro ao buscar dados:', error);
+  }
   }
 
   updateDocs() {

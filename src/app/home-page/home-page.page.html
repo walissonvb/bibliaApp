@@ -1,15 +1,23 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar *ngFor="let dateChurch of dateChurch">
+    <div class="img-container">
+      <img class="img-title" [src]="dateChurch.name" alt="nome da congregação" />
+    </div>
     <ion-buttons slot="end">
       <ion-button (click)="goToDetailPage()">
-        <ion-icon name="close-circle-outline"></ion-icon>
+        <ion-icon  name="close-circle-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 <hr class="divider">
 
 <ion-content>
+<div>
+  <ion-button class="butto-biblie" fill="outline" expand="block" (click)="goToDetailPage()">Biblia Sagrada</ion-button>
+
+</div>
   <ion-card class="card-imagem" *ngIf="versiculoDiario">
     <ion-card-title [innerHTML]="versiculoDiario">
     </ion-card-title>
@@ -161,8 +169,4 @@
       </ion-card>
     </div>
   </div>
-
 </ion-content>
-<ion-footer>
-  <ion-button class="butto-biblie" fill="outline" expand="block" (click)="goToDetailPage()">Biblia Sagrada</ion-button>
-</ion-footer>
